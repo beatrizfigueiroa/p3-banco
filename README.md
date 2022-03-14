@@ -1,4 +1,14 @@
 # p3-unikut
+
+  _    _       _ _          _   
+ | |  | |     (_) |        | |  
+ | |  | |_ __  _| | ___   _| |_ 
+ | |  | | '_ \| | |/ / | | | __|
+ | |__| | | | | |   <| |_| | |_ 
+  \____/|_| |_|_|_|\_\\__,_|\__|
+                                
+                                
+                                
 Projeto programação 3 UNIKUT 
 
 Realizado por Beatriz Ramos, Robson Lins e Talita Pacheco
