@@ -2,11 +2,13 @@ package unikut.Interface;
 import java.util.Scanner;
 
 import unikut.Logica.Account;
+import unikut.Logica.DataBase;
 
 
 public class Interface {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        DataBase data = new DataBase();
         System.out.println("UNIKUT");
         System.out.println("Wellcome :)");
         do{
@@ -25,18 +27,59 @@ public class Interface {
             case 1:
                 Account account = new Account();
                 System.out.println("Create a Username");
-                account.setPassword(s.nextLine());
+                account.setUsername(s.nextLine());
                 s.nextLine();
                 System.out.println("Create a password");
-                account.setUsername(s.nextLine());
+                account.setPassword(s.nextLine());
                 System.out.println("Tell your name");
                 account.setName(s.nextLine());
-                account.CreateAccount(account);
-                account.ShowAccounts();
+                data.CreateAccount(account);
+                data.ShowAccounts();
                 break;
         
             case 2:
-
+                System.out.print("Username: ");
+                String user = s.nextLine();
+                s.nextLine();
+                System.out.print("Password: ");
+                String pass = s.nextLine();
+                boolean b = data.Login(user, pass);
+                if (b) {
+                    System.out.println("Welcome back " + data.getAccountName());
+                    System.out.println("1 - Edit your account");
+                    System.out.println("2 - Add a new friend");
+                    System.out.println("3 - Send message");
+                    int option2 = s.nextInt();
+                    switch (option2) {
+                        case 1:
+                            System.out.println("What do you want to change");
+                            System.out.println("1 - Name | 2- Username | 3 - Password ");
+                            int option3 = s.nextInt();
+                            if (option3 == 1) {
+                                System.out.println("Tell your new name");
+                                String newName = s.nextLine();
+                                s.nextLine();
+                                System.out.println(data.EditAccount(newName, user, pass, option3));
+                            }else if (option3 == 2) {
+                                System.out.println("Tell your new User");
+                                String newUser = s.nextLine();
+                                s.nextLine();
+                                System.out.println(data.EditAccount(newUser, user, pass, option3));
+                            }else if (option3 == 3) {
+                                System.out.println("Tell your new pass");
+                                String newPass = s.nextLine();
+                                s.nextLine();
+                                System.out.println(data.EditAccount(newPass, user, pass, option3));
+                            }
+                            data.ShowAccounts();
+                            break;
+                    
+                        default:
+                            break;
+                    }
+                }else{
+                    System.out.println("You have entered a invalid username or password");
+                }
                 break;
         }
     }while(10 > 0);

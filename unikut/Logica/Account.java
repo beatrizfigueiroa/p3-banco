@@ -1,11 +1,11 @@
 package unikut.Logica;
-import java.util.LinkedList;
+import java.util.ArrayList;
 
 public class Account {
     private String username;
     private String password;
     private String name;
-    private LinkedList<Account> accounts = new LinkedList<Account>();
+    private ArrayList<Account> accounts = new ArrayList<Account>();
     
     public String getUsername() {
         return username;
@@ -26,10 +26,14 @@ public class Account {
         this.username = username;
     }
 
-    public void CreateAccount(Account account){
-        accounts.add(account);
-    }
-    public void ShowAccounts(){
-        System.out.println(accounts);
-    }
+    @Override
+    public boolean equals(Object obj) {
+       if(obj instanceof Account){
+            Account other = (Account) obj;
+            if (this.username.equals(other.username) && this.password.equals(other.password)){
+                return true;
+            }
+       }   
+       return false; 
+    } 
 }
