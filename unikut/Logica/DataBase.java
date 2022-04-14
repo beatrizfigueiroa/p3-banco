@@ -1,10 +1,9 @@
 package unikut.Logica;
 import java.util.ArrayList;
 
-public class DataBase extends Account{
-    private ArrayList<Account> accounts = new ArrayList<Account>();
+public class DataBase {
+    protected ArrayList<Account> accounts = new ArrayList<Account>();
     private String accountName;
-
 
     public String getAccountName() {
         return accountName;
@@ -32,6 +31,15 @@ public class DataBase extends Account{
             }
         }
         return false;
+    }
+
+    public Account getAccount(String user, String pass){
+        for (Account account: accounts) {
+            if (account.getUsername().equals(user) && account.getPassword().equals(pass)) {
+                return account;
+            }
+        }
+        return null;
     }
 
     public boolean EditAccount(String edit, String user, String pass, int i){
