@@ -43,10 +43,12 @@ public class DataBase extends Account{
                         System.out.println(account.getName());
                         break;
                     case 2:
-                        account.setPassword(edit);
+                        account.setUsername(edit);
+                        System.out.println(account.getUsername());
                         break;
                     case 3:
-                        account.setUsername(edit);
+                        account.setPassword(edit);
+                        System.out.println(account.getPassword());
                         break;
                 }         
                 return true;
