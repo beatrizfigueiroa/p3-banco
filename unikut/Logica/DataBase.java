@@ -2,9 +2,14 @@ package unikut.Logica;
 import java.util.ArrayList;
 
 public class DataBase {
-    protected ArrayList<Account> accounts = new ArrayList<Account>();
+    
+    private ArrayList<Account> accounts = new ArrayList<Account>();
     private String accountName;
 
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+    
     public String getAccountName() {
         return accountName;
     }

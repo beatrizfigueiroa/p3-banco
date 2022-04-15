@@ -17,7 +17,7 @@ public class Account extends DataBase{
     }
     
     public boolean Request(Account acc, String User, DataBase data){
-        for (Account account : data.accounts) {
+        for (Account account : data.getAccounts()) {
             if (account.getUsername().equals(User)) {
                 account.friendsRequest.add(acc);
                 return true;
@@ -41,6 +41,12 @@ public class Account extends DataBase{
             }
         }
         return false;
+    }
+
+    public void ShowFriends(){
+        for (Account account: friends) {
+            System.out.println(account.getName());
+        }
     }
 
     public String getUsername() {
