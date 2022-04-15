@@ -78,10 +78,11 @@ public class Interface {
                             System.out.println("1 - Edit your account");
                             System.out.println("2 - Add a new friend");
                             System.out.println("3 - Send message");
-                            System.out.println("4 - Requests");
-                            System.out.println("5 - Remove a friend");
-                            System.out.println("6 - FriendList");
-                            System.out.println("7 - Log out");
+                            System.out.println("4 - View messages");
+                            System.out.println("5 - Requests");
+                            System.out.println("6 - Remove a friend");
+                            System.out.println("7 - FriendList");
+                            System.out.println("8 - Log out");
                             option2 = s.nextInt();
                             switch (option2) {
                                 case 1:
@@ -116,10 +117,20 @@ public class Interface {
                                     if (acc.getFriends().isEmpty()) {
                                         System.out.println("You have no friends to text");
                                     }else{
-                                        System.out.println("Shape ainda ta sendo construido pf espere mais uns anos");
-                                    }
-                                    break;
+                                        System.out.println("Enter the username you want to send a message");
+                                        String userSendMessage = s.next();
+                                        System.out.println("Type message");
+                                        String message = s.next();
+                                        Boolean m = acc.Message(acc, userSendMessage, data, message);
+                                }
                                 case 4:
+                                    if (acc.getFriends().isEmpty()) {
+                                        System.out.println("You have no friends");
+                                    }else{
+                                        acc.ShowMessages();
+                                    }
+                                    break; 
+                                case 5:
                                     if (!acc.getFriendsRequest().isEmpty()) {
                                         for (Account accountRequest : acc.getFriendsRequest()) {
                                             System.out.println(accountRequest.getUsername() + " Has sent u a friend request");
@@ -140,7 +151,7 @@ public class Interface {
                                         }
                                     }   
                                     break;
-                                case 5:
+                                case 6:
                                     if (acc.getFriends().isEmpty()) {
                                         System.out.println("You can't delete if you don't have any added friends");
                                         break;
@@ -149,17 +160,17 @@ public class Interface {
                                     String userToDelete = s.next();
                                     acc.removeFriend(acc, userToDelete);
                                     break;
-                                case 6:
+                                case 7:   
                                     if (acc.getFriends().isEmpty()) {
                                         System.out.println("You have no friends");
                                     }else{
                                         acc.ShowFriends();
                                     }
-                                    break;
-                                case 7: 
-                                System.out.println("See ya :D");    
+                                    break; 
+                                case 8:
+                                    System.out.println("See ya :D"); 
                             }
-                        }while (option2 != 7);
+                        }while (option2 != 8);
                     }else{
                         System.out.println("You have entered a invalid username or password");
                     }

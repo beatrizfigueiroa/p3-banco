@@ -7,11 +7,14 @@ public class Account extends DataBase{
     private String name;
     private ArrayList<Account> friends = new ArrayList<Account>();
     private ArrayList<Account> friendsRequest = new ArrayList<Account>();
+    private ArrayList<String> messagesAccounts = new ArrayList<String>();
 
+    public ArrayList<String> getMessagesAccounts() {
+        return messagesAccounts;
+    }
     public ArrayList<Account> getFriendsRequest(){
         return this.friendsRequest;
     }
-    
     public ArrayList<Account> getFriends(){
         return this.friends;
     }
@@ -20,6 +23,16 @@ public class Account extends DataBase{
         for (Account account : data.getAccounts()) {
             if (account.getUsername().equals(User)) {
                 account.friendsRequest.add(acc);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean Message(Account acc, String User, DataBase data, String message){
+        for (Account account : data.getAccounts()) {
+            if (account.getUsername().equals(User)) {
+                account.messagesAccounts.add(message);
                 return true;
             }
         }
@@ -46,6 +59,12 @@ public class Account extends DataBase{
     public void ShowFriends(){
         for (Account account: friends) {
             System.out.println(account.getName());
+        }
+    }
+
+    public void ShowMessages(){
+        for (String message: messagesAccounts) {
+            System.out.println(message);
         }
     }
 
