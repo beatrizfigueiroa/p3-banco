@@ -1,8 +1,9 @@
-package unikut.Interface;
+package Códigos.Interface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import unikut.Logica.Account;
-import unikut.Logica.DataBase;
+
+import Códigos.Logica.Account;
+import Códigos.Logica.DataBase;
 
 
 public class Interface {
