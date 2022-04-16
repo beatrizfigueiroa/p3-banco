@@ -1,17 +1,6 @@
-# p3-unikut
-
-  _    _       _ _          _   
- | |  | |     (_) |        | |  
- | |  | |_ __  _| | ___   _| |_ 
- | |  | | '_ \| | |/ / | | | __|
- | |__| | | | | |   <| |_| | |_ 
-  \____/|_| |_|_|_|\_\\__,_|\__|
-                                
-                                
-                                
+# P3-UNIKUT
+                              
 Projeto programação 3 UNIKUT 
-
-Realizado por Beatriz Ramos, Robson Lins e Talita Pacheco
 
 Rede social é uma estrutura social composta por pessoas ou organizações, conectadas por um ou vários tipos de relações, que compartilham valores e objetivos comuns. Uma das fundamentais características na definição das redes é a sua abertura, possibilitando relacionamentos horizontais e não hierárquicos entre os participantes. “Redes não são, portanto, apenas uma outra forma de estrutura, mas quase uma não estrutura, no sentido de que parte de sua força está na habilidade de se fazer e desfazer rapidamente.”
 
