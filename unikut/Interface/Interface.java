@@ -84,11 +84,28 @@ public class Interface {
                             System.out.println("7 - FriendList");
                             System.out.println("8 - Log out");
                             option2 = s.nextInt();
+                            while (option2 < 1 || option2 > 8) {
+                                System.out.println("Invalid option, choose a valid one");
+                                System.out.println("1 - Edit your account");
+                                System.out.println("2 - Add a new friend");
+                                System.out.println("3 - Send message");
+                                System.out.println("4 - View messages");
+                                System.out.println("5 - Requests");
+                                System.out.println("6 - Remove a friend");
+                                System.out.println("7 - FriendList");
+                                System.out.println("8 - Log out");
+                                option2 = s.nextInt();
+                            }
                             switch (option2) {
                                 case 1:
                                     System.out.println("What do you want to change");
                                     System.out.println("1 - Name | 2- Username | 3 - Password ");
                                     int option3 = s.nextInt();
+                                    while (option3 < 1 || option3 > 3) {
+                                        System.out.println("Invalid option, choose a valid one");
+                                        System.out.println("1 - Name | 2- Username | 3 - Password ");
+                                        option3 = s.nextInt();
+                                    }
                                     if (option3 == 1) {
                                         System.out.println("Tell your new name");
                                         String newName = s.next();
@@ -121,7 +138,8 @@ public class Interface {
                                         String userSendMessage = s.next();
                                         System.out.println("Type message");
                                         String message = s.nextLine();
-                                        s.nextLine();
+                                        message = s.nextLine();
+                                        message = message + " sent by " + acc.getUsername();
                                         Boolean m = acc.Message(acc, userSendMessage, data, message);
                                         if(m){
                                             System.out.println("You've just sent a message"); 
@@ -135,8 +153,10 @@ public class Interface {
                                     }
                                     break; 
                                 case 5:
-                                    if (!acc.getFriendsRequest().isEmpty()) {
-                                        for (Account accountRequest : acc.getFriendsRequest()) {
+                                    while (!acc.getFriendsRequest().isEmpty()) {
+                                        Account accountRequest = new Account();
+                                        for (int i = 0; i < acc.getFriendsRequest().size(); i++) {
+                                            accountRequest = acc.getFriendsRequest().get(i); 
                                             System.out.println(accountRequest.getUsername() + " Has sent u a friend request");
                                             System.out.println("Do you want to accept " + accountRequest.getUsername() + " as your friend? yes/no");
                                             String acception = s.next();
@@ -148,12 +168,13 @@ public class Interface {
                                                 acc.addFriend(accountRequest, acc);
                                                 System.out.println("");
                                                 System.out.println("Now you and " + accountRequest.getUsername() + " are friends");
-                                                acc.removeRequest(acc, accountRequest.getUsername(), data);
                                             }else{
                                                 System.out.println("");
                                                 System.out.println("You have not accepted " + accountRequest.getUsername() + " request");
-                                            }   
+                                            } 
+                                            acc.removeRequest(acc, accountRequest.getUsername(), data);  
                                         }
+                                        
                                     }   
                                     break;
                                 case 6:
@@ -178,6 +199,7 @@ public class Interface {
                         }while (option2 != 8);
                     }else{
                         System.out.println("You have entered a invalid username or password");
+                        
                     }
                     break;
             case 3:

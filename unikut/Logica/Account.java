@@ -32,7 +32,7 @@ public class Account extends DataBase{
     public boolean removeRequest(Account acc, String User, DataBase data){
         for (Account account : data.getAccounts()) {
             if (account.getUsername().equals(User)) {
-                account.friendsRequest.remove(acc);
+                acc.friendsRequest.remove(account);
                 return true;
             }
         }
@@ -40,7 +40,7 @@ public class Account extends DataBase{
     }
 
     public boolean Message(Account acc, String User, DataBase data, String message){
-        for (Account account : this.friends) {
+        for (Account account : acc.friends) {
             if (account.getUsername().equals(User)) {
                 account.messagesAccounts.add(message);
                 return true;
