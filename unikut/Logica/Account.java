@@ -29,8 +29,18 @@ public class Account extends DataBase{
         return false;
     }
 
-    public boolean Message(Account acc, String User, DataBase data, String message){
+    public boolean removeRequest(Account acc, String User, DataBase data){
         for (Account account : data.getAccounts()) {
+            if (account.getUsername().equals(User)) {
+                account.friendsRequest.remove(acc);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean Message(Account acc, String User, DataBase data, String message){
+        for (Account account : this.friends) {
             if (account.getUsername().equals(User)) {
                 account.messagesAccounts.add(message);
                 return true;

@@ -120,8 +120,12 @@ public class Interface {
                                         System.out.println("Enter the username you want to send a message");
                                         String userSendMessage = s.next();
                                         System.out.println("Type message");
-                                        String message = s.next();
+                                        String message = s.nextLine();
+                                        s.nextLine();
                                         Boolean m = acc.Message(acc, userSendMessage, data, message);
+                                        if(m){
+                                            System.out.println("You've just sent a message"); 
+                                        }
                                 }
                                 case 4:
                                     if (acc.getFriends().isEmpty()) {
@@ -144,6 +148,7 @@ public class Interface {
                                                 acc.addFriend(accountRequest, acc);
                                                 System.out.println("");
                                                 System.out.println("Now you and " + accountRequest.getUsername() + " are friends");
+                                                acc.removeRequest(acc, accountRequest.getUsername(), data);
                                             }else{
                                                 System.out.println("");
                                                 System.out.println("You have not accepted " + accountRequest.getUsername() + " request");
