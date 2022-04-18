@@ -1,9 +1,9 @@
-package Códigos.Interface;
+package unikut.Interface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import Códigos.Logica.Account;
-import Códigos.Logica.DataBase;
+import unikut.Logica.Account;
+import unikut.Logica.DataBase;
 
 
 public class Interface {
@@ -52,7 +52,9 @@ public class Interface {
                     System.out.println("Create a password");
                     account.setPassword(s.next());
                     System.out.println("Tell your name");
-                    account.setName(s.next());
+                    String name = s.nextLine();
+                    name = s.nextLine();
+                    account.setName(name);
                     data.CreateAccount(account);
                     break;
             
@@ -71,11 +73,15 @@ public class Interface {
                     boolean b = data.Login(user, pass);
                     Account acc = data.getAccount(user, pass);
                     if (b) {
-                        System.out.println("Welcome back " + data.getAccountName());
+                        System.out.println("Welcome back " + data.getAccountName() + " :D");
                         do{
                             if (!acc.getFriendsRequest().isEmpty()) {
                                 System.out.println("You have some new friend requests check your requests");
                             }
+                            if (!acc.getMessagesAccounts().isEmpty()) {
+                                System.out.println("You have some new messages");
+                            }
+                            System.out.println("");
                             System.out.println("1 - Edit your account");
                             System.out.println("2 - Add a new friend");
                             System.out.println("3 - Send message");
@@ -122,8 +128,16 @@ public class Interface {
                                     }
                                     break;
                                 case 2:    
+                                    if (acc.getFriends().size() > 24) {
+                                        System.out.println("You have reached the limit of friends");
+                                        break;
+                                    }
                                     System.out.println("Tell the Username you want to add");
                                     String userToAdd = s.next();
+                                    while (userToAdd.equals(acc.getUsername())) {
+                                        System.out.println("You can't request yourself as a friend, write a valid user");
+                                        userToAdd = s.next();
+                                    }
                                     boolean f = acc.Request(acc, userToAdd, data);
                                     if (f) {
                                         System.out.println("You have sent a request to " + userToAdd);
@@ -145,12 +159,14 @@ public class Interface {
                                         if(m){
                                             System.out.println("You've just sent a message"); 
                                         }
+                                        break;
                                 }
                                 case 4:
-                                    if (acc.getFriends().isEmpty()) {
-                                        System.out.println("You have no friends");
+                                    if (acc.getMessagesAccounts().isEmpty()) {
+                                        System.out.println("You have no messages");
                                     }else{
                                         acc.ShowMessages();
+                                        acc.getMessagesAccounts().clear();
                                     }
                                     break; 
                                 case 5:
@@ -165,12 +181,13 @@ public class Interface {
                                                 System.out.println("Invalid option, choose a valid one");
                                                 acception = s.next();
                                             }
-                                            if (acception.equals("yes")) {
+                                            if (acception.equals("yes") && acc.getFriends().size()> 24){
+                                                System.out.println("You can't accept because you have passed friend limit");
+                                                break;
+                                            }else if (acception.equals("yes")) {
                                                 acc.addFriend(accountRequest, acc);
-                                                System.out.println("");
                                                 System.out.println("Now you and " + accountRequest.getUsername() + " are friends");
                                             }else{
-                                                System.out.println("");
                                                 System.out.println("You have not accepted " + accountRequest.getUsername() + " request");
                                             } 
                                             acc.removeRequest(acc, accountRequest.getUsername(), data);  

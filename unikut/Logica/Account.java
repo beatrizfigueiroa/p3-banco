@@ -1,5 +1,6 @@
-package Códigos.Logica;
+package unikut.Logica;
 import java.util.ArrayList;
+
 
 public class Account extends DataBase{
     private String username;
@@ -67,8 +68,9 @@ public class Account extends DataBase{
     }
 
     public void ShowFriends(){
-        for (Account account: friends) {
-            System.out.println(account.getName());
+        for (int index = 0; index < friends.size(); index++) {
+            Account account = friends.get(index);
+            System.out.println(index + " - " + account.getName() + ": @" + account.getUsername());      
         }
     }
 
