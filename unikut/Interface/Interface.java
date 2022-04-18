@@ -8,7 +8,6 @@ import unikut.Logica.DataBase;
 
 public class Interface {
     public static void main(String[] args){
-        String op1, op2;
         int option, option2;
         Scanner s = new Scanner(System.in);
         DataBase data = new DataBase();
@@ -221,7 +220,6 @@ public class Interface {
                     }
                     break;
             case 3:
-                System.out.println("Finishing");
                 break;         
             }
 
@@ -232,6 +230,7 @@ public class Interface {
             System.out.println(" :C ");
         }
         finally{
+            s.close();
             System.out.println("Finishing program, please restart it");
         }
     }
