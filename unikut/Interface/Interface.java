@@ -1,7 +1,6 @@
 package unikut.Interface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
 import unikut.Logica.Account;
 import unikut.Logica.DataBase;
 
